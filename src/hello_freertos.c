@@ -22,7 +22,7 @@ void blink_task(__unused void *params)
         // Update the GPIO LED pin to current LED state
         cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, on);
         
-        // Do not toggle every 47th pulse
+        // Do not toggle every 11th pulse
         if (count++ % 11)
             // Toggle LED state
             on = !on;
