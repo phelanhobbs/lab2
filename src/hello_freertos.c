@@ -17,8 +17,17 @@ void blink_task(__unused void *params)
     // Initialize wireless hardware and check okay
     hard_assert(cyw43_arch_init() == PICO_OK);
 
+    int count = 0;
+    bool on = false;
+
     while (true) {
-        blink();
+        blink_update(&count, &on);
+
+        printf(on ? "true": "false");
+        // printf("%d", count);
+
+        // Update the GPIO LED pin to current LED state
+        cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, on);
     }
 }
 
@@ -29,16 +38,12 @@ void main_task(__unused void *params)
     xTaskCreate(blink_task, "BlinkThread", BLINK_TASK_STACK_SIZE, NULL, BLINK_TASK_PRIORITY, NULL);
     
     // Initialize local vars
-    char c;
+    char in, out;
     
     // Loop through all characters until getchar is false
-    while(c = getchar()) {
-	    if (c <= 'z' && c >= 'a') // Char is lowercase
-            putchar(c - 32); // Set char uppercase
-	    else if (c >= 'A' && c <= 'Z') // Char is uppercase
-            putchar(c + 32); // Set char lowercase
-	    else 
-            putchar(c); // Do not modify char
+    while(in = getchar()) {
+        invert_case(in, &out);
+	    putchar(out);
     }
 }
 

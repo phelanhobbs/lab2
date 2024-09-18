@@ -1,22 +1,25 @@
 #include "functions.h"
 
-#include "pico/stdlib.h"
-#include "pico/multicore.h"
-#include "pico/cyw43_arch.h"
-
-int count = 0;
-bool on = false;
-
-void blink()
+void blink_update(int *counter, bool *state)
 {
-    // Update the GPIO LED pin to current LED state
-    cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, on);
-        
     // Do not toggle every 11th pulse
-    if (count++ % 11)
+    if ((*counter)++ % 11)
+    {
         // Toggle LED state
-        on = !on;
+        *state = !(*state);
+    }
 
-        // Delay 1 second
-        vTaskDelay(1000);
+    // Delay 0.5 second
+    vTaskDelay(500);
+}
+
+
+void invert_case(char in, char *out)
+{
+    if (in <= 'z' && in >= 'a') // Char is lowercase
+        *out = (in - 32); // Set char uppercase
+    else if (in >= 'A' && in <= 'Z') // Char is uppercase
+        *out = (in + 32); // Set char lowercase
+    else 
+        *out = in; // Do not modify char
 }
