@@ -5,8 +5,7 @@
 #include "pico/multicore.h"
 #include "pico/cyw43_arch.h"
 
-int count = 0;
-bool on = false;
+#include "functions.h"
 
 #define MAIN_TASK_PRIORITY      ( tskIDLE_PRIORITY + 1UL )
 #define BLINK_TASK_PRIORITY     ( tskIDLE_PRIORITY + 2UL )
@@ -19,16 +18,7 @@ void blink_task(__unused void *params)
     hard_assert(cyw43_arch_init() == PICO_OK);
 
     while (true) {
-        // Update the GPIO LED pin to current LED state
-        cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, on);
-        
-        // Do not toggle every 11th pulse
-        if (count++ % 11)
-            // Toggle LED state
-            on = !on;
-
-            // Delay 1 second
-            vTaskDelay(1000);
+        blink();
     }
 }
 
