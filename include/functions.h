@@ -13,5 +13,4 @@ void blink_update(int *counter, bool *state);
 
 void invert_case(char in, char *out);
 
-
 #endif
