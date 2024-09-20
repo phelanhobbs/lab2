@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> da477f7822ea1d1ed967307cc527efd9c24f5253
 name: CMake
 on: [push, pull_request]
 
