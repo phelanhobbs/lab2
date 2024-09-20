@@ -4,7 +4,7 @@ add_executable(hello_freertos
     functions.c
     )
 
-pico_set_program_name(hello_freertos "test")
+pico_set_program_name(hello_freertos "hello_freertos")
 pico_set_program_version(hello_freertos "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB.
