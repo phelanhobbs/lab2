@@ -42,6 +42,7 @@
         "functions.h": "c",
         "freertos.h": "c",
         "cyw43_arch.h": "c",
-        "multicore.h": "c"
+        "multicore.h": "c",
+        "stdio.h": "c"
     }
 }
