@@ -71,11 +71,29 @@
             },
             "problemMatcher": [],
             "osx": {
-                "command": "/Applications/Renode.app/Contents/MacOS/macos_run.command",
+                "command": "/Applications/Renode.app/Contents/MacOS/macos_run.command"
             },
             "windows": {
                 "command": "${env:USERPROFILE}/Renode.exe"
             }
+        },
+        {
+            "type": "cmake",
+            "label": "CMake: build",
+            "command": "build",
+            "targets": [
+                "all"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "CMake template build task"
+        },
+        {
+            "type": "cmake",
+            "label": "CMake: configure",
+            "command": "configure",
+            "problemMatcher": [],
+            "detail": "CMake template configure task"
         }
     ]
 }
