@@ -1,10 +1,10 @@
 # This is the main binary. List your C files here.
 add_executable(hello_freertos
-    hello_freertos.c
     functions.c
+    hello_freertos.c
     )
-
-pico_set_program_name(hello_freertos "test")
+    
+pico_set_program_name(hello_freertos "hello_freertos")
 pico_set_program_version(hello_freertos "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB.
@@ -19,6 +19,7 @@ target_link_libraries(hello_freertos PRIVATE
   pico_async_context_freertos
   FreeRTOS-Kernel-Heap4
 )
+
 
 # The CYW43 is the Wifi/Bluetooth module. If the board is set to pico_w, this
 # variable will be set and the wireless libraries added.

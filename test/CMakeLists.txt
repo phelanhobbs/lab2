@@ -1,7 +1,8 @@
-add_executable(mytest test_functions.c unity_config.c)
+add_executable(mytest test_functions.c unity_config.c ../src/functions.c)
 
 target_link_libraries(mytest PRIVATE
   pico_stdlib
+  pico_multicore
   pico_async_context_freertos
   FreeRTOS-Kernel-Heap4
   unity
