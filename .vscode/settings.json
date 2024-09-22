@@ -44,5 +44,5 @@
         "cyw43_arch.h": "c",
         "multicore.h": "c",
         "stdio.h": "c"
-    }
+    },
 }
